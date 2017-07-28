@@ -1,0 +1,11 @@
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "adminlte.scss";
+@import "skin-red.scss";
+@import "normalize.scss";
+.box-header.with-border {
+    border-bottom: 1px solid #f4f4f4;
+}

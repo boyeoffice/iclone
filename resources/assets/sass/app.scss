@@ -1,0 +1,110 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+body {
+  background-color: #E6E6E6;
+}
+body, .navbar-fixed-top, .navbar-fixed-bottom {
+    min-width: 970px;
+}
+a {
+    color: #333;
+    text-decoration: none;
+    transition: 0.25s;
+}
+.container {
+  max-width: none !important;
+  width: 1170px;
+}
+
+.navbar-default {
+    background-color: #A34D3E;
+    border-color: #e7e7e7;
+}
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #fff;
+  background-color: #9C5549;
+}
+
+.navbar-default .navbar-text {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:active {
+  color: #fff;
+  background-color: #9C5549;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: #9C5549;
+    color: #fff;
+}
+.thumbnail {
+    padding: 5px 0;
+    margin-bottom: 15px;
+    line-height: 1.72222;
+  }
+.col-thumb {
+    margin-bottom: 10px;
+}
+.thumbnail .caption {
+    padding: 0 9px;
+    color: #34495e;
+}
+.caption p {
+    overflow: hidden;
+    white-space: nowrap !important;
+    text-overflow: ellipsis;
+}
+.thumbnail p {
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.p-author {
+    line-height: normal;
+}
+.btn-team-xs {
+    background-color: #999 !important;
+    line-height: normal;
+    position: relative;
+    font-family: Arial, sans-serif;
+    margin-top: 2px;
+}
+.myicon-right {
+    margin-right: 4px;
+}
+.img-avatar-shots {
+    margin: 0 !important;
+    display: inline-block !important;
+}
+.text-decoration-none {
+    text-decoration: none !important;
+}
+.btn-block {
+    white-space: normal;
+}
+.position-relative {
+    position: relative;
+}
+.title-shots {
+    font-size: 15px;
+}
+h1 {
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
