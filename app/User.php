@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
+use DB;
+//use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -17,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-       'id','username', 'name', 'email', 'gender', 'status', 'password','confirmation_code',
+       'id','username', 'name', 'email', 'gender', 'status','location', 'about'
     ];
 
     /**
@@ -26,10 +28,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','confirmation_code',
+        'password', 'remember_token','confirmation_code', 'api_token',
     ];
     public function posts()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany(Post::class);
+    }
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCoverToUsers extends Migration
+class AddMoreToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddCoverToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('cover')->default('cover.jpg')->after('avatar');
+            $table->string('location')->nullable()->after('email');
+            $table->text('about')->nullable()->after('location');
         });
     }
 
@@ -26,7 +27,8 @@ class AddCoverToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('cover');
+            $table->dropColumn('location');
+            $table->dropColumn('about');
         });
     }
 }

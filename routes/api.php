@@ -16,3 +16,26 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+/** Authentication **/
+Route::group(['namespace' => 'Api'], function() {
+	Route::post('login', 'AuthController@login');
+	Route::post('register', 'AuthController@register');
+	Route::post('logout', 'AuthController@logout');
+});
+
+Route::group(['namespace' => 'Api', 'middleware' => ['auth:api']], function() {
+	Route::resource('post', 'PostController');
+	/** User's Profile **/
+   Route::get('{username}', 'AuthController@getProfile');
+   /** Profile With Posts **/
+   Route::get('vint/{username}', 'AuthController@getUserPost');
+   /** Update Profile **/
+   Route::post('update_profile', 'AuthController@update');
+});
+Route::group(['namespace' => 'Api', 'prefix' => 'js', 'middleware' => ['auth:api']], function() {
+	Route::post('like', 'JsController@postLike');
+	Route::get('like', 'JsController@getLike');
+});
+
+
+

@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
 use App\Post;
 use Image;
 use File;
+use App\Like;
 
 class PostController extends Controller
 {
@@ -18,8 +20,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::orderBy('created_at', 'desc')->get();
-        return response()->json($post);
+        $posts = Post::orderBy('created_at', 'desc')->with(['user','likes'])->paginate(10);
+        return response()->json($posts);
     }
 
     /**
@@ -45,12 +47,12 @@ class PostController extends Controller
         if(str_contains($exploded[0], 'jpg'))
             $extention = 'jpg';
         else
-            $extention = 'png';
+            $extention = 'jpg';
         $filename = str_random().'.'.$extention;
         $path = public_path().'/content/'. date("Ym", time()) .'/'.date("d", time()) .'/'. Auth::user()->id;
         File::makeDirectory($path, $mode = 0777, true, true);
         $location = $path . '/' . $filename;
-        Image::make($request->get('image'))->save($location, 10);
+        Image::make($request->get('image'))->fit(800, 600, function ($constraint) {$constraint->upsize();})->save($location);
          //Save file in database
         $savePath = '/content/'. date("Ym", time()) .'/'.date("d", time()) .'/'. Auth::user()->id . '/' . $filename;
 

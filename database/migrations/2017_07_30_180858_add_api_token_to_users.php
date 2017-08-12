@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCoverToUsers extends Migration
+class AddApiTokenToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddCoverToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('cover')->default('cover.jpg')->after('avatar');
+            $table->string('api_token')->nullable()->after('password');
         });
     }
 
@@ -26,7 +26,7 @@ class AddCoverToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('cover');
+            $table->dropColumn('api_token');
         });
     }
 }
