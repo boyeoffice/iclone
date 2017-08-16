@@ -12,7 +12,6 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .js('resources/assets/js/profile/user.js', 'public/js')
      .js('resources/assets/js/auth.js', 'public/js')
      .js('resources/assets/js/dashboard.js', 'public/js')
      .sass('resources/assets/sass/auth.scss', 'public/css')

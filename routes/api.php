@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api']], function() {
    Route::get('vint/{username}', 'AuthController@getUserPost');
    /** Update Profile **/
    Route::post('update_profile', 'AuthController@update');
+   Route::post('update_password', 'AuthController@update_password');
 });
 Route::group(['namespace' => 'Api', 'prefix' => 'js', 'middleware' => ['auth:api']], function() {
 	Route::post('like', 'JsController@postLike');

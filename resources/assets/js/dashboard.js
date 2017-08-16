@@ -1,5 +1,5 @@
 require('./bootstrap.js')
-require('./sidebar.js')
+require('./vendor/sidebar.js')
 window.Vue = require('vue')
 
 

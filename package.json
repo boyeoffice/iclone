@@ -16,6 +16,9 @@
     "jquery": "^3.1.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
-    "vue": "^2.1.10"
+    "vue": "^2.3.3",
+    "vue-router": "^2.7.0",
+    "vue2-simplert": "0.0.10",
+    "vuex": "^2.3.1"
   }
 }

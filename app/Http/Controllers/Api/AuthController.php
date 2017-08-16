@@ -93,4 +93,19 @@ class AuthController extends Controller
         
         return response()->json(['success' => true]);
     }
+    public function update_password(Request $request)
+    {
+        $this->validate($request, [
+            'old_password' => 'required|min:6',
+            'new_password' => 'required|min:6'
+            ]);
+        $id_session = Auth::user()->id;
+        $user = User::find($id_session);
+        if($user && Hash::check($request->old_password, $user->password)){
+          $user->password =  Hash::make($request->new_password);
+          $user->update();
+          return response()->json(['success' => true]);
+        }
+        return response()->json(['old_password' => ['Incorrect Password']], 422);
+    }
 }

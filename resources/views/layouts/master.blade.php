@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>@yield('title') | Clone</title>
+        @if(Auth::guest())
+        <link rel="stylesheet" type="text/css" href="css/auth.css"> 
+        @endif
+        @if(Auth::user())
         <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/ionicons.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('css/dashboard.css')}}">
@@ -22,9 +26,18 @@
 
         window.Language = "{{ config('app.locale') }}"
         </script>
-    
+    @endif
     <body class="skin-red sidebar-mini">
-    <div id="app" class="wrapper">
+    @if(Auth::guest())
+    <!-- Login Form -->
+    <div id="app">
+    <auth></auth>
+    </div>
+ <script src="{{asset('js/auth.js')}}"></script>
+ @endif
+
+ @if(Auth::user())
+ <div id="app" class="wrapper">
     @include('inc.navbar')
     @include('inc.sidebar')
     @yield('content')
@@ -33,5 +46,8 @@
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/dashboard.js')}}"></script>
     @yield('scripts')
+    @endif
     </body>
 </html>
+
+
