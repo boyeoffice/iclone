@@ -35,7 +35,7 @@ Route::group(['namespace' => 'Api', 'middleware' => ['auth:api']], function() {
 });
 Route::group(['namespace' => 'Api', 'prefix' => 'js', 'middleware' => ['auth:api']], function() {
 	Route::post('like', 'JsController@postLike');
-	Route::get('like', 'JsController@getLike');
+	Route::post('follow', 'JsController@postFollow');
 });
 
 

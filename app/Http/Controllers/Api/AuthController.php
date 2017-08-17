@@ -10,6 +10,7 @@ use Hash;
 use App\Like;
 use Auth;
 use App\Profile;
+use App\Follower;
 
 class AuthController extends Controller
 {
@@ -65,7 +66,10 @@ class AuthController extends Controller
     {
         $user = User::where('username', $username)->first();
         $total = Post::where('user_id', '=', $user->id)->count();
-        $data = compact(['user','total']);
+        $totalFollowing = Follower::where('follower', '=', $user->id)->where('status', '1')->count();
+        $totalFollower = Follower::where('following', '=', $user->id)->where('status', '1')->count();
+        $followers = Follower::where('following', '=', $user->id)->where('status', '1')->get();
+        $data = compact(['user','total','totalFollowing','totalFollower', 'followers']);
         return response()->json($data);
     }
     public function getUserPost($username)
